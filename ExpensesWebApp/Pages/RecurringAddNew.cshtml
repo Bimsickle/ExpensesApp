@@ -1,0 +1,153 @@
+﻿@page
+@model ExpensesWebApp.Pages.RecurringAddNewModel
+
+@{
+	ViewData["Title"] = "Add Recurring Transaction";
+}
+<h1>Create Recurring Expense</h1>
+
+<form method="post">
+	<div class="form-group">
+		<input class="form-control  form-control-lg" asp-for="@Model.recurring.Description" placeholder="Enter a Description for the Recurring Transaction" />
+	</div>
+	<hr />
+	<h3>Schedule</h3>	
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" asp-for="@Model.Frequency" ></label>
+		<div class="col-sm-10">
+			<select id="frequency" class="form-control" asp-items="@Model.FrequencyOptions" asp-for="@Model.recurring.FrequencyCycleID"></select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Record every x Frequencies</label>
+		<div class="col-sm-10">
+			<input class="form-control" min="0" asp-for="@Model.recurring.FrequencyCycleIncrem" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Amount Charged</label>
+		<div class="col-sm-10">
+			<input class="form-control" asp-for="@Model.recurring.Amount" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label  class="col-sm-2 col-form-label">Date to Start Recurrences</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="date" asp-for="@Model.recurring.DateStart"  />
+		</div>
+	</div>
+	<hr />
+	<h3>Expense Categories</h3>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Category for Expense</label>
+		<div class="col-sm-10">
+			<select class="form-control" asp-items="@Model.DebitOptions" asp-for="@Model.recurring.CostAccountID" ></select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Paying from Account</label>
+		<div class="col-sm-10">
+			<select class="form-control" asp-items="@Model.AccountOptions" asp-for="@Model.recurring.DefaultPayAccountID"></select>
+		</div>
+	</div>
+
+	<hr />
+	<h3>Optional</h3>
+	<h5>Limited Time</h5>
+	
+		<div class="form-group">
+			<label  class="form-label">Is this Indefinite?</label>
+			<input id="increase" class="form-check-input" type="checkbox" asp-for="@Model.Indefinite" onchange="indefiniteChange()"/>
+		</div>
+	<div id="indefinite"  style="visibility: hidden">
+		<p>Fill in either # Repeats OR End by Date. (The maximum of both will be selected if both have values.)</p>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label" ># Repeats</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.recurring.Instances"  />
+			</div>
+		</div>
+
+		<div class="form-group row">
+				<label class="col-sm-2 col-form-label" >End by Date</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="date" asp-for="@Model.recurring.DateEnd"/>
+				</div>
+		</div>
+	</div>
+
+	<br />
+	<h5>Increase in Amount</h5>	
+	
+	<div class="form-group">
+		<label  class="form-label">Does this charge Increase over time?</label>
+		<input id="increase" class="form-check-input" type="checkbox" asp-for="@Model.recurring.Increase" onchange="increaseChanged()"/>
+	</div>
+	<div id="increaseDeatails" style="visibility: hidden">
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label" asp-for="@Model.Frequency" ></label>
+			<div class="col-sm-10">
+				<select id="frequency" class="form-control" asp-items="@Model.FrequencyOptions" asp-for="@Model.recurring.IncreaseCycleID"></select>
+			</div>
+		</div>
+
+		<div class="form-group row" >
+			<label class="col-sm-2 col-form-label" >Record every x Frequencies</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.recurring.IncreaseCycleIncrem"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label  class="form-label">Calculate next Date for Increase on Save (Override Below Date)</label>
+			<input id="increase" class="form-check-input" type="checkbox" asp-for="@Model.calcIncreaseDate" />
+		</div>
+		<div class="form-group row" >
+			<label class="col-sm-2 col-form-label" >Next Increase Due at</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" type="date" asp-for="@Model.recurring.IncreaseDate"/>
+			</div>
+		</div>
+		<div class="form-group row" >
+			<label class="col-sm-2 col-form-label" >Type of Increase</label> 
+			<div class="col-sm-10">
+				<select class="form-control" asp-items="@Model.IncreaseTypeOptions" asp-for="@Model.recurring.IncreaseType"></select>
+			</div>
+		</div>
+		<div class="form-group row" >
+			<label class="col-sm-2 col-form-label" >Amount for Increase (%, $)</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.recurring.IncreaseAmount"/>
+			</div>
+		</div>
+	</div>
+	
+	<button type="submit" class="btn btn-primary">Create Recurring Transaction</button>
+</form>
+<br />
+
+
+
+<script>
+	function increaseChanged() {
+
+	   var element = document.getElementById('increaseDeatails');
+   
+		if(element.style.visibility == "visible"){
+			element.style.visibility = "hidden";}
+		else{
+			element.style.visibility = "visible";
+		}  
+	}
+</script>
+
+<script>
+	function indefiniteChange() {
+	   var element = document.getElementById('indefinite');
+   
+		if(element.style.visibility == "visible"){
+			element.style.visibility = "hidden";}
+		else{
+			element.style.visibility = "visible";
+		}  
+	}
+</script>

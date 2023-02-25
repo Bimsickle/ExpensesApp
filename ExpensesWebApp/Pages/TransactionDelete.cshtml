@@ -1,0 +1,38 @@
+﻿@page
+@model ExpensesWebApp.Pages.TransactionDeleteModel
+@{
+	ViewData["Title"] = "Delete Transaction";
+}
+@if (!@Model.deleted)
+{
+	<h1>Confirm Deletion of Transaction: @Model.transaction.Description</h1>
+
+	<table class="table">
+		<thead>
+			<th>Field</th>
+			<th>Value</th>
+		</thead>
+		<tr>
+			<td>Date Paid</td>
+			<td typeof="date">@Model.transaction.DatePaid</td>
+		</tr>
+		<tr>
+			<td>Amount</td>
+			<td>$@Model.transaction.Amount</td>
+		</tr>
+	</table>
+	<br />
+	<form method="post">
+		<input type="hidden" asp-for="@Model.selected" />
+		<input type="hidden" asp-for="@Model.endDate" />
+		<input type="hidden" asp-for="@Model.Description" />
+		<button class="btn btn-danger" type="submit" >Permanantly Delete Transaction</button>
+	</form>	
+}
+else{
+	<h1>Transaction Successfully Deleted: @Model.Description @DateOnly.FromDateTime(Model.endDate)</h1>
+	<hr />
+	<p>
+		<a class="link-secondary" asp-route-endDate="@Model.endDate" asp-page="/TransactionList">Return to Transactions</a>
+	</p>
+}

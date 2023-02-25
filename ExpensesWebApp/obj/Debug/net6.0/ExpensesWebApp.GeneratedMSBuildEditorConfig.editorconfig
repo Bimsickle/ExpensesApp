@@ -1,0 +1,112 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ExpensesWebApp
+build_property.RootNamespace = ExpensesWebApp
+build_property.ProjectDir = D:\cSharp\Expenses\ExpensesApp\ExpensesWebApp\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\cSharp\Expenses\ExpensesApp\ExpensesWebApp
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/AddOpeningBalance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkT3BlbmluZ0JhbGFuY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/BankAccountBalance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFua0FjY291bnRCYWxhbmNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/CostAccounts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29zdEFjY291bnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/DebitAccountCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGViaXRBY2NvdW50Q3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/IncomeAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5jb21lQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/IncomeRecord.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5jb21lUmVjb3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/IncomeViewAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5jb21lVmlld0FsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/IncomeViewRecorded.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5jb21lVmlld1JlY29yZGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/RecurringAddNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjdXJyaW5nQWRkTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/RecurringEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjdXJyaW5nRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/RecurringExpenses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjdXJyaW5nRXhwZW5zZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/RecurringRecordTransaction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjdXJyaW5nUmVjb3JkVHJhbnNhY3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/RunningBalance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUnVubmluZ0JhbGFuY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/SpendMoney.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3BlbmRNb25leS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/TransactionDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/TransactionEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/TransactionList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25MaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cSharp/Expenses/ExpensesApp/ExpensesWebApp/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-pv4wy2pn76

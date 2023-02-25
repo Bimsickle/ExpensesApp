@@ -1,0 +1,24 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column Description in table [dbo].[BalanceGroups] is currently  NCHAR (10) NOT NULL but is being changed to
+          VARCHAR (50) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible
+         with type  VARCHAR (50) NOT NULL.
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+     Alter
+       [dbo].[BalanceGroups] (Table)
+     Create
+       Default Constraint: unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+
+** Supporting actions
+
+The type for column Description in table [dbo].[BalanceGroups] is currently  NCHAR (10) NOT NULL but is being changed to  VARCHAR (50) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  VARCHAR (50) NOT NULL.
+

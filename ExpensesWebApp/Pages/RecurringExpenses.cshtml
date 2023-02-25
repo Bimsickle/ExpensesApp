@@ -1,0 +1,69 @@
+﻿@page
+@model ExpensesWebApp.Pages.RecurringExpensesModel
+@{
+	ViewData["Title"] = "Recurring Expenses";
+}
+
+<h1>Recurring Expenses</h1>
+<table class="table">
+	<thead>
+		<th>Description</th>
+		<th>Status</th>
+		<th>Amount</th>
+		<th>Frequency</th>
+		<th>Start Date</th>
+		<th>End Date</th>
+		<th>Last Recorded On</th>
+		<th>Next Increase Date</th>
+		<th>Increase Amount</th>
+		<th>Action</th>
+		<th></th>
+		<th></th>
+	</thead>
+	<tbody>
+		@foreach (var exp in @Model.RecurringExpenses)
+		{
+			string style = exp.Active <1 ? "table-secondary"  :null;
+			string newstyle = Model.selected==exp.Id ? "table-success fw-bolder":null;
+			<tr class=  "@style @newstyle">
+				<td>@exp.Description</td>
+				<td>@if (exp.Active==1) { <text>Active</text>}else{<text>Inactive</text>}</td>
+				<td>@string.Format("{0:C}",exp.Amount)</td>
+					@{
+					void GetFrequencyName(int id)
+					{
+						foreach (var f in @Model.Frequencies)
+						{
+							if (f.Id == id)
+							{
+								<td>@f.Frequency</td>
+							}
+						}
+					}
+					GetFrequencyName(@exp.FrequencyCycleID);
+				}
+				<td>@DateOnly.FromDateTime(exp.DateStart)</td>
+				<td>@if ((DateTime.Compare(@exp.DateEnd, Convert.ToDateTime("1/1/2002")) >= 0)){@DateOnly.FromDateTime(exp.DateEnd)}</td>
+				<td>@if ((DateTime.Compare(@exp.LatestRecord, Convert.ToDateTime("1/1/2002")) >= 0)){@DateOnly.FromDateTime(exp.LatestRecord)}</td>
+				<td>@if ((DateTime.Compare(@exp.IncreaseDate, Convert.ToDateTime("1/1/2002")) >= 0)){@DateOnly.FromDateTime(exp.IncreaseDate)}</td>
+				<td>@if ( exp.Increase)
+					{
+						@if (exp.IncreaseType ==1)
+						{
+							@string.Format("{0:C}",exp.IncreaseAmount)
+						}
+						else {
+							<text>% @exp.IncreaseAmount</text>
+						}
+					}			
+				</td>
+				<td><a class="link-danger" asp-route-selected="@exp.Id" asp-route-active="@exp.Active"  asp-page="/RecurringRecordTransaction">Record Transactions</a></td>
+				<td><a class="link-primary" asp-route-recurr="@exp.Id" asp-route-AccountName="(@exp.Description)" asp-page="/TransactionList">View Transactions</a></td>
+				<td><a class="link-secondary" asp-route-selected="@exp.Id" asp-page="/RecurringEdit">Edit Expense</a></td>
+			</tr>
+		}
+	</tbody>
+</table>
+<hr />
+<h2>Other Actions</h2>
+<p><a class="link-secondary" asp-page="/RecurringAddNew">Add New Recurring Expense</a></p>

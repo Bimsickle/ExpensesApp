@@ -1,0 +1,139 @@
+﻿@page
+@model ExpensesWebApp.Pages.IncomeAddModel
+@{
+	ViewData["Title"] = "Add Income Stream";
+}
+<h1>Add Income Stream</h1>
+
+<form method="post">
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Income Description</label>
+		<div class="col-sm-10">
+			<input class="form-control" placeholder="My Super Fantastic New job! - Enter an Actual Description" asp-for="@Model.Income.Description"/>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Income Rate  <br />($0.00 per x cycles)</label>
+		<div class="col-sm-10">
+			<input class="form-control" min ="0" asp-for="@Model.Income.SalaryRate"/>
+			<label  class="form-label">Is this a Salary (annual) pay?</label>
+			<input  class="form-check-input" type="checkbox" asp-for="@Model.IsSalary" onchange="showSalaryDetails()"/>
+			
+			<div id="salary" style="visibility: hidden">
+				<input class="form-control" min ="1" asp-for="@Model.Income.PayCycleInrem"/>
+				<select class="form-control" asp-items="@Model.FrequencyOptions" asp-for="@Model.Income.SalaryCycleID" ></select>
+			</div>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Bank Account for Income Payments</label>
+		<div class="col-sm-10">
+			<select class="form-control" asp-items="@Model.AccountOptions" asp-for="@Model.Income.BankAccountID" ></select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Start Date</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="date" asp-for="@Model.Income.StartDate" />
+		</div>
+	</div>
+	@if (@Model.IsStudentLoan)
+	{
+		<div class="form-group">
+			<label  class="form-label">Are you paying your Student Loan with this income (HELLP Tax Loan)?</label>
+			<input  class="form-check-input" type="checkbox" asp-for="@Model.Income.HoldTaxStudentLoan" />
+		</div>
+	}
+	<div class="form-group">
+		<label  class="form-label">Is your Employer witholding your Tax?</label>
+		<input  class="form-check-input" type="checkbox" asp-for="@Model.Income.TaxHeld" />
+	</div>
+	<div class="form-group">
+		<label  class="form-label">Does this income source attract Tax?</label>
+		<input  class="form-check-input" type="checkbox" asp-for="@Model.Tax" />
+	</div>
+	<hr />
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Standard Weekly Hours</label>
+		<div class="col-sm-10">
+			<input class="form-control" min="0" asp-for="@Model.Income.StandardWeekHours" />
+		</div>	
+	</div>	
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Annual Paid Leave Hours</label>
+		<div class="col-sm-10">
+			<input class="form-control" min="0" asp-for="@Model.Income.PaidLeaveHoursAnnual" />
+		</div>
+	</div>
+	<hr />
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Pay Cycle</label>
+		<div class="col-sm-10">
+			<select class="form-control" asp-items="@Model.FrequencyOptions" asp-for="@Model.Income.PayCycle" ></select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Paid every x cycles</label>
+		<div class="col-sm-10">
+			<input class="form-control" min="0" asp-for="@Model.Income.PayCycleInrem" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >First Expected Pay Date</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="date" asp-for="@Model.Income.PayStartDate" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Pay Day for Cycle <br />(Not Calculated for Monthly)</label>
+		<div class="col-sm-10">
+			<select class="form-control" asp-items="@Model.Weekdays" asp-for="@Model.Income.PayDayOfWeek" ></select>
+		</div>
+	</div>
+
+	<div id="casual"  style="visibility: hidden">
+		<hr />
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label" >Weekend Rate</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.Income.WeekendRate" />
+			</div>	
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label" >Evening Rate</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.Income.EveningRate" />
+			</div>	
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label" >Holiday Rate</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.Income.HolidayRate" />
+			</div>	
+		</div>
+		<br />
+	</div>
+	<button class="btn btn-success" type="submit" >Add Income</button>
+</form>
+
+
+<script>
+	function showSalaryDetails() {
+
+	   var element = document.getElementById('salary');
+   
+		if(element.style.visibility == "visible"){
+			element.style.visibility = "hidden";}
+		else{
+			element.style.visibility = "visible";
+		}  
+		
+		var hours = document.getElementById('casual');
+   
+		if(hours.style.visibility == "visible"){
+			hours.style.visibility = "hidden";}
+		else{
+			hours.style.visibility = "visible";
+		}  
+	}
+</script>

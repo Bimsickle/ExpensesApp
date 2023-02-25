@@ -1,0 +1,37 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+     Create
+       [dbo].[LeaveAccount] (Table)
+       [dbo].[LeaveTransaction] (Table)
+       Default Constraint: unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveAccount] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveTransaction] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveTransaction] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveTransaction] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[LeaveTransaction] (Default Constraint)
+       Foreign Key: unnamed constraint on [dbo].[LeaveAccount] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[LeaveAccount] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[LeaveAccount] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[LeaveTransaction] (Foreign Key)
+
+** Supporting actions

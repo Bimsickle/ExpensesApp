@@ -1,0 +1,65 @@
+﻿@page
+@model ExpensesWebApp.Pages.TransactionListModel
+@{
+	ViewData["Title"] = "Transaction Search";
+}
+
+<h1>Transaction Search @Model.AccountName</h1>
+
+<form method="post">
+	<div class = "form-group">
+		<label class="form-label" >Start</label>
+		<input class="form-control" asp-for="@Model.startDate" />
+	</div>
+
+	<div class = "form-group">
+		<label class="form-label" >End </label>
+		<input class="form-control" asp-for="@Model.endDate" />
+	</div>
+	<br/>
+	<button type="submit" class="btn btn-primary">Search</button>
+</form>
+<hr />
+<br />
+@if (Model.Transactions?.Count > 0)
+{
+	<h2>Results (@DateOnly.FromDateTime(Model.startDate) - @DateOnly.FromDateTime(Model.endDate))</h2>
+	<table class="table">
+		<thead>
+			<th>Recurring</th>
+			<th>Transaction Date</th>
+			<th>Description</th>
+			<th>From Account</th>
+			<th>To Account</th>
+			<th>Money Out</th>
+			<th>Money In</th>
+			<th>Confirmed</th>
+			<th>Actions</th>
+			<th></th>
+			<th></th>
+		</thead>
+		<tbody>
+			@foreach (var trans in Model.Transactions)
+			{
+				string style = trans.Highlight >0 ? "table-success" :  trans.Highlight <0 ? null: "table-secondary" ;
+				string styleConf = !trans.Confirmed ? "fst-italic text-primary" : null;
+				<tr class=  "@style @styleConf">
+					<td>@trans.Recurring</td>
+					<td>@DateOnly.FromDateTime(trans.DatePaid)</td>
+					<td>@trans.Description</td>
+					<td>@trans.AccountFrom</td>
+					<td>@trans.AccountTo</td>
+					<td>@string.Format("{0:C}",trans.MoneyOut)</td>
+					<td>@string.Format("{0:C}",trans.MoneyIn)</td>					
+					<td>@if (!@trans.Confirmed){<text>Not Confirmed</text>}</td>					
+					<td><a class="link-secondary" asp-route-selected="@trans.Id" asp-page="/TransactionEdit">Edit</a></td>
+					<td><a class="link-secondary" asp-route-selected="@trans.Id" asp-route-Duplicate="true" asp-page="/TransactionEdit">Duplicate</a></td>						
+					<td><a class="link-danger" asp-route-selected="@trans.Id" asp-page="/TransactionDelete">Delete Transaction</a></td>						
+				</tr>
+			}
+		</tbody>
+	</table>	
+}
+else{
+	<h2>No Results </h2>
+}

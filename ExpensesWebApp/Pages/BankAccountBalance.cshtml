@@ -1,0 +1,71 @@
+﻿@page
+@model ExpensesWebApp.Pages.BankAccountBalanceModel
+@{
+	ViewData["Title"] = "Bank Account Balance";
+}
+<h1>Bank Account Balance</h1>
+
+<form method="post">
+	<div class = "form-group">
+		<label>Balance Date</label>
+		<div class="input-group mb-3">
+              <input  asp-for="@Model.DateEnd" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+              </div>
+          </div>
+     </div>
+</form>
+<hr />
+@if (Model.BankAccounts?.Count > 0)
+{
+	<h2>Balances as at @DateOnly.FromDateTime(Model.DateEnd)</h2>
+	<table class="table">
+		<thead>
+			<th>Account Type</th>
+			<th>Account</th>
+			<th>Bank</th>
+			<th>Limit</th>
+			<th>Balance</th>
+			<th>Available Balance</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			@foreach (var bank in Model.BankAccounts)
+			{
+				string style = bank.Balance <0 ? "table-secondary" :null;
+				<tr class=  "@style">
+
+					<td>@bank.Account</td>
+					<td>@bank.AccountName</td>
+					<td>@bank.Bank</td>
+					<td>@string.Format("{0:C}",bank.Limit)</td>
+					<td>@string.Format("{0:C}",bank.Balance)</td>		
+					<td>@string.Format("{0:C}",bank.AvailableBalance)</td>		
+					<td><a class="link-info" asp-route-account="@bank.CostAccountID" 
+												asp-route-endDate="@Model.DateEnd.ToString("yyyy-MM-dd")" 
+												asp-route-AccountName ="(@bank.AccountName)"
+												asp-page="/TransactionList">Details
+											</a></td>
+
+					
+				</tr>
+			}
+			<tr class="fw-bold">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>@string.Format("{0:C}",Model.Balance)</td>
+				<td>@string.Format("{0:C}",Model.AvailableBalance)</td>
+				<td></td>
+			</tr>
+		</tbody>
+
+	</table>
+	
+}
+else{
+
+	<h2>No Accounts</h2>
+}

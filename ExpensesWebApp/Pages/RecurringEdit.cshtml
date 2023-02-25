@@ -1,0 +1,162 @@
+﻿@page
+@model ExpensesWebApp.Pages.RecurringEditModel
+@{
+	ViewData["Title"] = "Edit Recurring Transactions";
+}
+<h1>Edit Recurring Transactions</h1>
+
+@*
+	@using (Html.BeginForm()) {
+	@Microsoft.AspNetCore.Html.AntiForgeryToken()
+	@Html.ValidationSummary(true)
+*@
+<form method="post">
+	<div class="form-group">
+		<input class="form-control  form-control-lg" asp-for="@Model.Expense.Description" placeholder="Enter a Description for the Recurring Transaction" />
+	</div>
+	<hr />
+	<h3>Schedule</h3>	
+	<div class="form-group">
+			<label  class="form-label">Active</label>
+			<input class="form-check-input" type="checkbox" asp-for="@Model.Active" />
+		</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" asp-for="@Model.Frequency" ></label>
+		<div class="col-sm-10">
+			<select id="frequency" class="form-control" asp-items="@Model.FrequencyOptions" asp-for="@Model.Expense.FrequencyCycleID"></select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Record every x Frequencies</label>
+		<div class="col-sm-10">
+			<input class="form-control" min="0" asp-for="@Model.Expense.FrequencyCycleIncrem" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Amount Charged</label>
+		<div class="col-sm-10">
+			<input class="form-control" asp-for="@Model.Expense.Amount" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label  class="col-sm-2 col-form-label">Date to Start Recurrences</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="date" asp-for="@Model.Expense.DateStart"  />
+		</div>
+	</div>
+	<hr />
+	<h3>Expense Categories</h3>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Category for Expense</label>
+		<div class="col-sm-10">
+			<select class="form-control" asp-items="@Model.DebitOptions" asp-for="@Model.Expense.CostAccountID" ></select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Paying from Account</label>
+		<div class="col-sm-10">
+			<select class="form-control" asp-items="@Model.AccountOptions" asp-for="@Model.Expense.DefaultPayAccountID"></select>
+		</div>
+	</div>
+
+	<hr />
+	<h3>Optional</h3>
+	<h5>Limited Time</h5>
+	
+		<div class="form-group">
+			<label  class="form-label">Is this Indefinite?</label>
+			<input id="increase" class="form-check-input" type="checkbox" asp-for="@Model.Indefinite" onchange="indefiniteChange()"/>
+		</div>
+	<div id="indefinite"  style="visibility: hidden">
+		<p>Fill in either # Repeats OR End by Date. (The maximum of both will be selected if both have values.)</p>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label" ># Repeats</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.Expense.Instances"  />
+			</div>
+		</div>
+
+		<div class="form-group row">
+				<label class="col-sm-2 col-form-label" >End by Date</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="date" asp-for="@Model.Expense.DateEnd"/>
+				</div>
+		</div>
+	</div>
+
+	<br />
+	<h5>Increase in Amount</h5>	
+	
+	<div class="form-group">
+		<label  class="form-label">Does this charge Increase over time?</label>
+		<input id="increase" class="form-check-input" type="checkbox" asp-for="@Model.Expense.Increase" onchange="increaseChanged()"/>
+	</div>
+	@{string style = Model.Expense.Increase ==true ? "visibility: visible"  :"visibility: hidden";}
+	<div id="increaseDeatails" style="@style">
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label" asp-for="@Model.Frequency" ></label>
+			<div class="col-sm-10">
+				<select id="frequency" class="form-control" asp-items="@Model.FrequencyOptions" asp-for="@Model.Expense.IncreaseCycleID"></select>
+			</div>
+		</div>
+
+		<div class="form-group row" >
+			<label class="col-sm-2 col-form-label" >Record every x Frequencies</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.Expense.IncreaseCycleIncrem"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label  class="form-label">Calculate next Date for Increase on Save (Override Below Date)</label>
+			<input id="increase" class="form-check-input" type="checkbox" asp-for="@Model.calcIncreaseDate" />
+		</div>
+		<div class="form-group row" >
+			<label class="col-sm-2 col-form-label" >Next Increase Due at</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" type="date" asp-for="@Model.Expense.IncreaseDate"/>
+			</div>
+		</div>
+		<div class="form-group row" >
+			<label class="col-sm-2 col-form-label" >Type of Increase</label> 
+			<div class="col-sm-10">
+				<select class="form-control" asp-items="@Model.IncreaseTypeOptions" asp-for="@Model.Expense.IncreaseType"></select>
+			</div>
+		</div>
+		<div class="form-group row" >
+			<label class="col-sm-2 col-form-label" >Amount for Increase (%, $)</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.Expense.IncreaseAmount"/>
+			</div>
+		</div>
+	</div>
+	
+	<button type="submit" class="btn btn-primary">Update Recurring Transaction</button>
+</form>
+<br />
+
+
+
+<script>
+	function increaseChanged() {
+
+	   var element = document.getElementById('increaseDeatails');
+   
+		if(element.style.visibility == "visible"){
+			element.style.visibility = "hidden";}
+		else{
+			element.style.visibility = "visible";
+		}  
+	}
+</script>
+
+<script>
+	function indefiniteChange() {
+	   var element = document.getElementById('indefinite');
+   
+		if(element.style.visibility == "visible"){
+			element.style.visibility = "hidden";}
+		else{
+			element.style.visibility = "visible";
+		}  
+	}
+</script>

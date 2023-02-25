@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Holy Mackrel it's a Web App!</h1>
+    <p>Spend at your own cost.</p>
+</div>
+<hr />
+<div class="">
+    <h2>Transactions</h2>
+     <form class="form-inline" method="post">
+         <div class="input-group mb-3">
+              <select class="form-control" asp-items="@Model.AccountOptions" asp-for="@Model.AccountId" ></select>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">View Statement</button>
+              </div>
+          </div>
+     </form>    
+        
+        <p><a class="link-success" asp-page="/IncomeRecord">Record Salary Payment</a></p>
+        <p><a class="link-secondary" asp-page="">Confirm Recurring</a></p>
+        <p><a class="link-danger" asp-route-creditType="expense" asp-route-lockedSpend=true asp-page="/SpendMoney">Record Spending</a></p>
+        <p><a class="link-success" asp-route-debitType="income" asp-route-creditType="debit" asp-route-lockedReceive=true asp-page="/SpendMoney">Receive Money</a></p>
+        <hr />
+    <p><a class="link-secondary" asp-page="/SpendMoney">Record Other Expense</a></p>
+    <p><a class="link-secondary" asp-page="/RecurringAddNew">Add Recurring Transaction (set)</a></p>
+</div>
+
+<hr />
+<div class="text-center">
+    <h2>New Accounts</h2>
+    <p><a class="link-success" asp-page="/DebitAccountCreate">Create New Debit (Banking) Account</a></p>
+    <p><a class="link-secondary" asp-area="" asp-page="">Add New Credit Card</a></p>
+    <p><a class="link-secondary" asp-area="" asp-page="">Add New Loan Account</a></p>
+    <hr />
+    <h2>Income Sources</h2>
+    <p><a class="link-success" asp-area="" asp-page="/IncomeAdd">Add New Income Source</a></p>
+    <p><a class="link-secondary" asp-area="" asp-page="/IncomeViewAll">View Income Sources</a></p>
+</div>

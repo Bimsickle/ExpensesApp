@@ -1,0 +1,87 @@
+﻿@page
+@model ExpensesWebApp.Pages.RunningBalanceModel
+@{
+	ViewData["Title"] = "Running Balance";
+}
+
+<h1>Running Balances</h1>
+
+<form method = "post">
+	<div class="row justify-content-center">
+		<div class="col-4">
+		  <div class="form-group row">
+			<label class="col-sm-2 col-form-label" >Weeks</label>
+				<div class="col-sm-10">
+					<input class="form-control" min="10" asp-for=",@Model.size" />
+				</div>
+			</div>
+		</div>
+
+    <div class="col-4">
+       <div class = "form-group row">
+		<label class="col-sm-2 col-form-label" >Start</label>
+			<div class="col-sm-10">
+				<input class="form-control" asp-for="@Model.start" />
+			</div>
+		</div>
+	  </div>
+
+		<div class="col-4">
+			<div id="submitPayment" >
+				<button type="submit" class="btn btn-secondary">View</button>
+			</div>
+		</div>
+	</div>   
+</form>
+
+<hr />
+
+<table class = "table table-hover">
+	<thead  style="position: sticky;top: 0" class="table-light align-middle">
+		<th class="header" scope="col">Monday</th>
+		@foreach (var account in @Model.incomeAccounts)
+		{
+			<th class="header" scope="col">@account.Description</th>
+		}
+		<th class="header" scope="col">Total Income</th>
+		<th class="header" scope="col">Debit Bank Balance</th>
+		<th class="header" scope="col">Credit Here</th>
+		@foreach (var reccur in @Model.recurringExpenses)
+		{
+			<th class="header" scope="col">@reccur.Description</th>
+		}
+		<th class="header" scope="col">Action</th>
+	</thead>
+	<tbody>
+		@for (int i =0; i < @Model.size; i++)
+		{
+			string style = Model.bankBalance[i] <0 ? "text-danger" :  null ;
+			<tr>
+				<td>@Model.mondays[i]</td>
+				@for (int j = 0; j< @Model.incomeAccounts.Count(); j++)
+				{
+					<td>@string.Format("{0:C}",@Model.incomeTransactions[j][i])</td>
+				}
+				<td>@string.Format("{0:C}",@Model.incomeBalance[i])</td>
+				<td class=  "@style">@string.Format("{0:C}",@Model.bankBalance[i])</td>
+				<td></td>
+				@for (int j =0; j< @Model.recurringExpenses.Count();j++)
+				{
+					<td>@string.Format("{0:C}",@Model.recurringSpend[j][i])</td>
+				}
+				<td><a>Edit</a></td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+
+<link rel="stylesheet" href="extensions/sticky-header/bootstrap-table-sticky-header.css">
+<script src="extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+
+<style>
+        .header {
+            position: sticky;
+            top:0;
+        }
+    </style>

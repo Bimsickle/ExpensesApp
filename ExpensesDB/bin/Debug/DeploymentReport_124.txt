@@ -1,0 +1,19 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+     Create
+       [dbo].[IncreaseType] (Table)
+       Default Constraint: unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+       [dbo].[spGetIncreaseType] (Procedure)
+
+** Supporting actions

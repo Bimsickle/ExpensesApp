@@ -1,0 +1,48 @@
+﻿@page
+@model ExpensesWebApp.Pages.IncomeViewAllModel
+@{
+	ViewData["Title"] = "Income Sources";
+}
+
+<h1>Income Sources</h1>
+
+<table class="table">
+	<thead>
+		<th>Description</th>
+		<th>Start Date</th>
+		<th>End Date</th>
+		<th>Pay Rate</th>
+		<th>Pay Cycle</th>
+		<th>Bank Account</th>
+		<th>Last Pay Date</th>
+		<th>Last Pay Amount</th>
+		<th>Status</th>
+		<th>Actions</th>
+		<th></th>
+		<th></th>
+	</thead>
+	<tbody>
+		@foreach (var income in @Model.IncomeList)
+		{
+			string style = Model.selected==income.Id ? "table-success fw-bolder":null;
+			<tr class=  "@style">
+				<td>@income.Description</td>
+				<td>@if ((DateTime.Compare(@income.StartDate, Convert.ToDateTime("1/1/2002")) >= 0)){@DateOnly.FromDateTime(income.StartDate)}</td>
+				<td>@if ((DateTime.Compare(@income.EndDate, Convert.ToDateTime("1/1/2002")) >= 0)){@DateOnly.FromDateTime(income.EndDate)}</td>
+				<td>@string.Format("{0:C}",income.SalaryRate)</td>
+				<td>@{ var freq =@Model.GetFrequency(income.SalaryCycleID);<text>@freq</text>}</td>
+				<td>@{ var bank =@Model.GetBankName(income.BankAccountID);<text>@bank</text>}</td>
+				<td>@if ((DateTime.Compare(@income.LastPayDate, Convert.ToDateTime("1/1/2002")) >= 0)){@DateOnly.FromDateTime(income.LastPayDate)}</td>
+				<td>@string.Format("{0:C}",income.LastPayAmount)</td>
+				<td>@income.Active</td>
+				<td><a class="link-info" asp-route-account="@income.CostAccountID" 
+												asp-route-endDate="@Model.date.ToString("yyyy-MM-dd")" 
+												asp-route-AccountName ="(@income.Description)"
+												asp-page="/TransactionList">View transactions
+											</a></td>
+				<td>Edit</td>
+				<td><a class="link-success" asp-route-income="@income.Id"  asp-page="/IncomeRecord">Record Payment</a></td>
+			</tr>
+		}
+	</tbody>
+</table>

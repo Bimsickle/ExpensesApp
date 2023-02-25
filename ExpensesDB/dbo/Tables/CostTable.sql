@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[CostTable]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Account] VARCHAR(50) NOT NULL, 
+    [CreditDebit] INT NOT NULL DEFAULT 1
+)

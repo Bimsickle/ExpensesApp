@@ -1,0 +1,12 @@
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\bin\Debug\net6.0\ExpensesAppLibrary.deps.json
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\bin\Debug\net6.0\ExpensesAppLibrary.dll
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\bin\Debug\net6.0\ref\ExpensesAppLibrary.dll
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\bin\Debug\net6.0\ExpensesAppLibrary.pdb
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\obj\Debug\net6.0\ExpensesAppLibrary.csproj.AssemblyReference.cache
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\obj\Debug\net6.0\ExpensesAppLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\obj\Debug\net6.0\ExpensesAppLibrary.AssemblyInfoInputs.cache
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\obj\Debug\net6.0\ExpensesAppLibrary.AssemblyInfo.cs
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\obj\Debug\net6.0\ExpensesAppLibrary.csproj.CoreCompileInputs.cache
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\obj\Debug\net6.0\ExpensesAppLibrary.dll
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\obj\Debug\net6.0\ref\ExpensesAppLibrary.dll
+D:\cSharp\Expenses\ExpensesApp\ExpensesAppLibrary\obj\Debug\net6.0\ExpensesAppLibrary.pdb

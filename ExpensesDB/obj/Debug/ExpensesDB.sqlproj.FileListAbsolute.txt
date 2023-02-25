@@ -1,0 +1,6 @@
+D:\cSharp\Expenses\ExpensesApp\ExpensesDB\bin\Debug\ExpensesDB.dacpac
+D:\cSharp\Expenses\ExpensesApp\ExpensesDB\bin\Debug\ExpensesDB.dll
+D:\cSharp\Expenses\ExpensesApp\ExpensesDB\bin\Debug\ExpensesDB.pdb
+D:\cSharp\Expenses\ExpensesApp\ExpensesDB\obj\Debug\ExpensesDB.sqlproj.AssemblyReference.cache
+D:\cSharp\Expenses\ExpensesApp\ExpensesDB\obj\Debug\ExpensesDB.dll
+D:\cSharp\Expenses\ExpensesApp\ExpensesDB\obj\Debug\ExpensesDB.pdb

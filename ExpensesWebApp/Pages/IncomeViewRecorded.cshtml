@@ -1,0 +1,29 @@
+﻿@page
+@model ExpensesWebApp.Pages.IncomeViewRecordedModel
+@{
+	ViewData["Title"] = "Income Payment";
+}
+<h1>Completed Transaction</h1>
+
+<table class="table">
+	<thead>
+		<th>Transaction Date</th>
+		<th>Description</th>
+		<th>Amount</th>
+		<th>Actions</th>
+	</thead>
+	<tbody>
+		@foreach (var trans in Model.transactions)
+		{
+			<tr >
+				<td>@DateOnly.FromDateTime(trans.DatePaid)</td>
+				<td>@trans.Description</td>
+				<td>@string.Format("{0:C}",trans.Amount)</td>									
+				<td><a class="link-secondary" asp-route-selected="@trans.Id" asp-page="/TransactionEdit">Edit</a></td>
+			</tr>
+		}
+	</tbody>
+</table>	
+<div>
+	<p><a class="link-success" asp-page="/IncomeRecord">Record Another Salary Payment</a></p>
+</div>

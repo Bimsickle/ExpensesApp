@@ -1,0 +1,42 @@
+﻿@page
+@model ExpensesWebApp.Pages.DebitAccountCreateModel
+@{
+	ViewData["Title"] = "Create Debit Account";
+}
+
+<h1>Create New Debit Account</h1>
+<form method="post">
+	<div class = "form-group">
+		<label  asp-for="@Model.Description"></label>
+		<input class="form-control" asp-for="@Model.Description" placeholder="Savings Account"/>
+	</div>
+
+	<div class = "form-group">
+		<label  asp-for="@Model.Bank" ></label>
+		<input class="form-control" asp-for="@Model.Bank"  placeholder="A Trustworthy Bank"/>
+	</div>
+	<div class = "form-group">
+		<label  asp-for="@Model.OpeningDate" ></label>
+		<input class="form-control" asp-for="@Model.OpeningDate" />
+	</div>
+	<div class = "form-group">
+		<label  asp-for="@Model.InterestRate" ></label>
+		<input class="form-control" asp-for="@Model.InterestRate"  placeholder="13.99"/>
+	</div>
+	<div class = "form-group">
+		<label  asp-for="@Model.Fee" ></label>
+		<input class="form-control" asp-for="@Model.Fee"  placeholder="65.00"/>
+	</div>
+	<div class = "form-group">
+		<label  asp-for="@Model.Frequencies" ></label>
+		<select id="frequency" class="form-control" asp-items="@Model.FrequencyOptions" asp-for="@Model.FeeCycleID"></select>
+	</div>
+	<div class = "form-group">
+		<label  >How Many Frequency Cycles until the Fee recorded</label>
+		<input class="form-control" asp-for="@Model.FreeCycleIncremum" />
+	</div>
+	<br/>
+	<button type="submit" class="btn btn-primary">Create Account</button>
+</form>
+	
+

@@ -1,0 +1,87 @@
+﻿@page
+@model ExpensesWebApp.Pages.RecurringRecordTransactionModel
+@{
+	ViewData["Title"] = "Record Recurring Transactions";
+}
+
+<h1>Record Recurring Transactions: @Model.Description</h1>
+<h2>Latest Transaction: @if (Model.LatestTransaction != null){@DateOnly.FromDateTime(Model.LastDate)}</h2>
+
+<form method="post">
+	<div class = "form-group">
+		<label class="form-label" >Start Date</label>
+		<input type="date" class="form-control" asp-for="@Model.LastDate"  />
+	</div>
+	<hr />
+	@foreach (var opt in @Model.Option){
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" id="flexRadioDefault1" asp-for="@Model.optionSelected" value="@opt.Value" onchange="changeType()"  >
+		  <label class="form-check-label" >
+			@opt.Text
+		  </label>
+		</div>
+	}
+	
+	<hr />
+
+	<div id="date"style="visibility: visible">
+		<div class="form-group row">
+		<label class="col-sm-2 col-form-label" >Date to end by</label>
+			<div class="col-sm-10">
+				<input type="date" class="form-control"  asp-for="@Model.maxDate" value="@Model.maxDate"/>
+			</div>
+		</div>
+	</div>
+
+	<div style="visibility: hidden" id="count">
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label" >Number of Occurances</label>
+			<div class="col-sm-10">
+				<input class="form-control" min="0" asp-for="@Model.Quantity" value="@Model.Quantity"/>
+			</div>
+		</div>
+	</div>
+	<div>
+		<input type="hidden" asp-for="@Model.selected" value="@Model.selected"/>
+		<input type="hidden" asp-for="@Model.active" value="@Model.active"/>
+		
+		@if (@Model.Expense!=null){
+			<input type="hidden" asp-for="@Model.Expense.Id" value="@Model.selected"/>
+			<input type="hidden" asp-for="@Model.Expense.Description" value="@Model.Expense.Description"/>
+			<input type="hidden" asp-for="@Model.Expense.FrequencyCycleID" value="@Model.Expense.FrequencyCycleID"/>
+			<input type="hidden" asp-for="@Model.Expense.FrequencyCycleIncrem" value="@Model.Expense.FrequencyCycleIncrem"/>
+			<input type="hidden" asp-for="@Model.Expense.DateStart" value="@Model.Expense.DateStart"/>
+			<input type="hidden" asp-for="@Model.maxDate" value="@Model.maxDate"/>	
+			<input type="hidden" asp-for="@Model.Expense.CostAccountID" value="@Model.Expense.CostAccountID"/>	
+			<input type="hidden" asp-for="@Model.Expense.DefaultPayAccountID" value="@Model.Expense.DefaultPayAccountID"/>	
+			<input type="hidden" asp-for="@Model.Expense.Amount" value="@Model.Expense.Amount"/>	
+		}
+		@if (@Model.LatestTransaction != null)
+		{
+			<input type="hidden" asp-for="@Model.LatestTransaction.DatePaid" value="@Model.LatestTransaction.DatePaid"/>				
+		}
+	</div>
+	
+	<button type="submit" class="btn btn-primary">Add Recurring Transactions</button>
+
+</form>
+
+<script>
+	function changeType() {
+
+	   var element = document.getElementById('date');
+   
+		if(element.style.visibility == "visible"){
+			element.style.visibility = "hidden";}
+		else{
+			element.style.visibility = "visible";
+		} 
+		var element2 = document.getElementById('count');
+   
+		if(element2.style.visibility == "visible"){
+			element2.style.visibility = "hidden";}
+		else{
+			element2.style.visibility = "visible";
+		} 
+	}
+</script>

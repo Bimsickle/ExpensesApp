@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[TaxRate]
+(
+	[Id] INT NOT NULL PRIMARY KEY  IDENTITY, 
+    [Annual] DECIMAL(18, 4)  NOT NULL, 
+    [TaxThreshold] DECIMAL(18, 4)  NOT NULL, 
+    [Base] DECIMAL(18, 4)  NOT NULL DEFAULT 0.0,
+    [TaxPercent] DECIMAL(18, 4)  NOT NULL, 
+    [MedicareLevy] DECIMAL(18, 4)  NOT NULL DEFAULT .02, 
+    [HELLP] DECIMAL(18, 4)  NOT NULL DEFAULT 0.04
+)

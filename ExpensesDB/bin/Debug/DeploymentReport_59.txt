@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[WeekDates]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+     Table rebuild
+       [dbo].[WeekDates] (Table)
+     Create
+       Default Constraint: unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+
+** Supporting actions
+     Refresh
+       [dbo].[AddWeeks] (Procedure)

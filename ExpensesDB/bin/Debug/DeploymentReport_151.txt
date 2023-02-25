@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+     Alter
+       [dbo].[LoanAccount] (Table)
+     Create
+       Default Constraint: unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+
+** Supporting actions
+     Refresh
+       [dbo].[spGetBankAccountBalances] (Procedure)
+       [dbo].[spGetCostAccounts] (Procedure)

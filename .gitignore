@@ -1,0 +1,11 @@
+### VisualStudio ###
+.vs/*
+
+### DB Files ###
+ExpensesDB/ExpensesDB.dbmdl
+ExpensesDB/ExpensesDB.jfm
+ExpensesDB/ExpensesDB.refactorlog
+ExpensesDB/ExpensesDB.sqlproj
+ExpensesDB/ExpensesDB.sqlproj.user
+
+ExpensesDB/Publish Profiles/ExpensesDB.publish.xml

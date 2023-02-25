@@ -1,0 +1,69 @@
+﻿@page
+@model ExpensesWebApp.Pages.AddOpeningBalanceModel
+@{
+	ViewData["Title"] = "Opening Balance";
+}
+
+@if (@Model.Transactions.Count() ==0 )
+{
+	<h1>Add initial balance for (@Model.accountName) Account</h1>
+	<form method="post">
+		<div class = "form-group">
+			<label  class="form-label">Opening Balance &#9;</label>
+			<input class="form-control" asp-for="@Model.amount" />
+		</div>
+
+		<div class = "form-group">
+			<label  class="form-label">As of (Date) &#9;&nbsp;</label>
+			<input class="form-control" asp-for="@Model.date" />
+		</div>
+		<br/>
+		<button type="submit" class="btn btn-primary">Add</button>
+	</form>
+	<hr />
+}
+
+<div>
+	<h2>Transactions (@DateOnly.FromDateTime(Model.startDate) - @DateOnly.FromDateTime(Model.endDate))</h2>
+	<table class="table">
+		<thead>
+			<th>Recurring</th>
+			<th>Transaction Date</th>
+			<th>Description</th>
+			<th>From Account</th>
+			<th>To Account</th>
+			<th>Money Out</th>
+			<th>Money In</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			@foreach (var trans in Model.Transactions)
+			{
+				string style = trans.Highlight >0 ? "table-success" :  trans.Highlight <0 ? "table-secondary" :null;
+				<tr class=  "@style">
+
+					<td>@trans.Recurring</td>
+					<td>@DateOnly.FromDateTime(trans.DatePaid)</td>
+					<td>@trans.Description</td>
+					<td>@trans.AccountFrom</td>
+					<td>@trans.AccountTo</td>
+					<td>@string.Format("{0:C}",trans.MoneyOut)</td>
+					<td>@string.Format("{0:C}",trans.MoneyIn)</td>
+					<td>
+						@if (!@trans.Confirmed)
+						{
+							<button class="btn btn-success">Confirm</button>
+							<button class="btn btn-secondary">Edit</button>
+						}
+						else
+						{
+							<p>Confirmed <button class="btn btn-secondary">Edit</button></p>
+							
+						}
+					</td>
+				</tr>
+			}
+		</tbody>
+
+	</table>
+</div>

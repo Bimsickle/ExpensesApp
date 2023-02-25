@@ -1,0 +1,32 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+     Create
+       [dbo].[AccountLockBalance] (Table)
+       [dbo].[PeriodLock] (Table)
+       Default Constraint: unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[PeriodLock] (Default Constraint)
+       Foreign Key: unnamed constraint on [dbo].[AccountLockBalance] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[AccountLockBalance] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[AccountLockBalance] (Foreign Key)
+
+** Supporting actions

@@ -1,0 +1,29 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[BalanceDetails]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[BalanceDetails] (Default Constraint)
+       unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+       unnamed constraint on [dbo].[BalanceDetails] (Foreign Key)
+       unnamed constraint on [dbo].[BalanceDetails] (Foreign Key)
+       unnamed constraint on [dbo].[BalanceDetails] (Foreign Key)
+       unnamed constraint on [dbo].[BalanceDetails] (Foreign Key)
+     Table rebuild
+       [dbo].[BalanceDetails] (Table)
+     Create
+       Default Constraint: unnamed constraint on [dbo].[TaxRate] (Default Constraint)
+
+** Supporting actions
+     Create
+       Foreign Key: unnamed constraint on [dbo].[BalanceDetails] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[BalanceDetails] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[BalanceDetails] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[BalanceDetails] (Foreign Key)

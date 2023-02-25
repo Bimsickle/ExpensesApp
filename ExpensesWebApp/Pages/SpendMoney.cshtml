@@ -1,0 +1,111 @@
+﻿@page
+@model ExpensesWebApp.Pages.SpendMoneyModel
+@{
+	ViewData["Title"] = "Spend Money";
+}
+
+<h1>Record Transaction</h1>
+<hr />
+@if (@Model.lockedReceive)
+{
+    <form class="form-inline" method="post">
+        <div class="input-group mb-3">
+            <select class="form-control" asp-for="@Model.DebitType" >
+                <option value="income">Income</option>
+                <option value="debit">Debit (Bank) Account</option>
+                <option value="credit">Credit</option>
+            </select>
+            <div class="input-group-append">
+            <button class="btn btn-outline-success" type="submit" id="payaccount">Set Pay From Account Options</button>
+            </div>
+        </div>
+    </form> 
+}
+else if (@Model.lockedSpend)
+{
+    <h3>Select Accounts</h3>
+    <form class="form-inline" method="post">
+        <div class="input-group mb-3">
+            <select class="form-control" asp-for="@Model.DebitType" >
+                <option value="debit">Debit (Bank) Account</option>
+                <option value="credit">Credit</option>
+            </select>
+            <div class="input-group-append">
+            <button class="btn btn-outline-success" type="submit" id="payaccount">Set Pay From Account Options</button>
+            </div>
+        </div>
+    </form> 
+        <form class="form-inline" method="post">
+        <div class="input-group mb-3">
+            <select class="form-control" asp-for="@Model.CreditType" >
+                <option value="credit">Credit</option>
+               <option value="expense">Expense</option>
+            </select>
+            <div class="input-group-append">
+            <button class="btn btn-outline-danger" type="submit" >Set Pay To Account Options</button>
+            </div>
+        </div>
+    </form> 
+}
+else
+{
+    <h3>Select Accounts</h3>
+    <form class="form-inline" method="post">
+        <div class="input-group mb-3">
+            <select class="form-control" asp-for="@Model.DebitType" >
+                <option value="debit">Debit (Bank) Account</option>
+                <option value="credit">Credit</option>
+                <option value="loan">Loan</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+                <option value="all">All</option>
+            </select>
+            <div class="input-group-append">
+            <button class="btn btn-outline-success" type="submit" id="payaccount">Set Pay From Account Options</button>
+            </div>
+        </div>
+    </form> 
+    <form class="form-inline" method="post">
+        <div class="input-group mb-3">
+            <select class="form-control" asp-for="@Model.CreditType" >
+                <option value="debit">Debit (Bank) Account</option>
+                <option value="credit">Credit</option>
+                <option value="loan">Loan</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+                <option value="all">All</option>
+            </select>
+            <div class="input-group-append">
+            <button class="btn btn-outline-danger" type="submit" >Set Pay To Account Options</button>
+            </div>
+        </div>
+    </form> 
+
+    <hr />    
+}
+<form method="post">
+    <h3>Transaction Details</h3>
+    <div class = "form-group">
+		<label  class="form-label">Pay From</label>
+		<select class="form-control" asp-items="@Model.DebitOptions" asp-for="@Model.debit"></select>
+	</div>
+    <div class = "form-group">
+		<label  class="form-label">Pay To</label>
+		<select class="form-control" asp-items="@Model.CreditOptions" asp-for="@Model.credit" ></select>
+	</div>
+    <div class = "form-group">
+		<label  class="form-label">Date Paid</label>
+		<input class="form-control" asp-for="@Model.date" />
+	</div>
+    <div class = "form-group">
+		<label  class="form-label">Amount</label>
+		<input class="form-control" asp-for="@Model.amount" />
+	</div>
+    <div class = "form-group">
+		<label  class="form-label">Description</label>
+		<input class="form-control" asp-for="@Model.Description" />
+	</div>
+    
+    <button class="btn btn-primary" type="submit" >Record Transaction</button>
+    <br />
+</form>
